@@ -19,10 +19,10 @@ class ViewController: UIViewController {
     var currentGame: Game!
     let incorrectMovesAllowed = 7
     var listOfWords = [
-        "Мал-ина",
-        "Пол-ина",
-        "Кал-ина",
-        "Дол-ина",
+        "Малина",
+        "Полина",
+        "Калина",
+        "Долина",
     ].shuffled()
     var totalLosses = 0 {
         didSet {
