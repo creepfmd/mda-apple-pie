@@ -33,9 +33,6 @@ struct Game {
         guessedLetters.append(lowercasedLetter)
         if !word.lowercased().contains(lowercasedLetter) {
             incorrectMovesRemaining -= 1
-        } else {
-            
-        }
-        
+        }        
     }
 }

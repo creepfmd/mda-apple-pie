@@ -46,12 +46,7 @@ class ViewController: UIViewController {
     }
     
     func getCorrectLabelText() -> String {
-        var guessedWordLetters = [String]()
-        for letter in currentGame.guessedWord {
-            guessedWordLetters.append(String(letter))
-        }
-        
-        return guessedWordLetters.joined(separator: " ")
+        return currentGame.guessedWord.map({ (letter) in String(letter)}).joined(separator: " ")
     }
     
     func newGame() {
@@ -62,7 +57,9 @@ class ViewController: UIViewController {
         totalLosses = 0
     }
     
-    func startGame() {
+    func startGame(withWordList: [String]) {
+        listOfWords = withWordList.shuffled()
+        totalWords = listOfWords.count
         gameTypeStackView.isHidden = true
         gameStackView.isHidden = false
         newGameButton.isHidden = false
@@ -118,27 +115,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func unitedStatesButtonPressed() {
-        listOfWords = ListOfWords().unitedStates.shuffled()
-        totalWords = listOfWords.count
-        startGame()
+        startGame(withWordList: ListOfWords().unitedStates)
     }
     
     @IBAction func indiaStatesButtonPressed() {
-        listOfWords = ListOfWords().indiaStates.shuffled()
-        totalWords = listOfWords.count
-        startGame()
+        startGame(withWordList: ListOfWords().indiaStates)
     }
     
     @IBAction func countriesButtonPressed() {
-        listOfWords = ListOfWords().countries.shuffled()
-        totalWords = listOfWords.count
-        startGame()
+        startGame(withWordList: ListOfWords().countries)
     }
     
     @IBAction func citiesButtonPressed() {
-        listOfWords = ListOfWords().cities.shuffled()
-        totalWords = listOfWords.count
-        startGame()
+        startGame(withWordList: ListOfWords().cities)
     }
 }
 
