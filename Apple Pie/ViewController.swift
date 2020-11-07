@@ -19,18 +19,27 @@ class ViewController: UIViewController {
     var currentGame: Game!
     let incorrectMovesAllowed = 7
     var listOfWords = [
-        "Малина",
-        "Полина",
-        "Калина",
-        "Долина",
-    ]
-    var totalLosses = 0
-    var totalWins = 0
+        "Мал-ина",
+        "Пол-ина",
+        "Кал-ина",
+        "Дол-ина",
+    ].shuffled()
+    var totalLosses = 0 {
+        didSet {
+            newRound()
+        }
+    }
+    var totalWins = 0 {
+        didSet {
+            newRound()
+        }
+    }
     
     // MARK: - Methods
-    func newRound() {
-        currentGame = Game(word: listOfWords.removeFirst(), incorrectMovesRemaining: incorrectMovesAllowed)
-        updateUI()
+    func enableButtons(_ enable: Bool = true) {
+        for letterButton in letterButtons {
+            letterButton.isEnabled = enable
+        }
     }
     
     func getCorrectLabelText() -> String {
@@ -40,6 +49,28 @@ class ViewController: UIViewController {
         }
         
         return guessedWordLetters.joined(separator: " ")
+    }
+    
+    func newRound() {
+        guard !listOfWords.isEmpty else {
+            updateUI()
+            enableButtons(false)
+            return
+        }
+        currentGame = Game(word: listOfWords.removeFirst(), incorrectMovesRemaining: incorrectMovesAllowed)
+        enableButtons()
+        updateUI()
+    }
+    
+    func updateGameState() {
+        if currentGame.incorrectMovesRemaining < 1 {
+            totalLosses += 1
+        } else if currentGame.guessedWord == currentGame.word {
+            totalWins += 1
+        } else {
+            updateUI()
+        }
+        updateUI()
     }
     
     func updateUI() {
@@ -61,7 +92,7 @@ class ViewController: UIViewController {
         sender.isEnabled = false
         let letter = sender.title(for: .normal)!
         currentGame.playerGuessed(letter: Character(letter))
-        updateUI()
+        updateGameState()
     }
     
     
