@@ -10,6 +10,9 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: - IB Outlets
+    @IBOutlet weak var gameTypeStackView: UIStackView!
+    @IBOutlet weak var newGameButton: UIButton!
+    @IBOutlet weak var gameStackView: UIStackView!
     @IBOutlet weak var treeImageView: UIImageView!
     @IBOutlet var letterButtons: [UIButton]!
     @IBOutlet weak var correctWordLabel: UILabel!
@@ -18,20 +21,20 @@ class ViewController: UIViewController {
     // MARK: - Properties
     var currentGame: Game!
     let incorrectMovesAllowed = 7
-    var listOfWords = [
-        "Малина",
-        "Полина",
-        "Калина",
-        "Долина",
-    ].shuffled()
+    var listOfWords = [String]()
+    var totalWords = 0
     var totalLosses = 0 {
         didSet {
-            newRound()
+            if totalLosses > 0 {
+                newRound()
+            }
         }
     }
     var totalWins = 0 {
         didSet {
-            newRound()
+            if totalWins > 0 {
+                newRound()
+            }
         }
     }
     
@@ -49,6 +52,21 @@ class ViewController: UIViewController {
         }
         
         return guessedWordLetters.joined(separator: " ")
+    }
+    
+    func newGame() {
+        gameStackView.isHidden = true
+        newGameButton.isHidden = true
+        gameTypeStackView.isHidden = false
+        totalWins = 0
+        totalLosses = 0
+    }
+    
+    func startGame() {
+        gameTypeStackView.isHidden = true
+        gameStackView.isHidden = false
+        newGameButton.isHidden = false
+        newRound()
     }
     
     func newRound() {
@@ -79,12 +97,12 @@ class ViewController: UIViewController {
         let imageName = "Tree_\(imageNumber).pdf"
         treeImageView.image = UIImage(named: imageName)
         correctWordLabel.text = getCorrectLabelText()
-        scoreLabel.text = "Выиграно: \(totalWins). Проиграно: \(totalLosses)"
+        scoreLabel.text = "Выиграно: \(totalWins)/\(totalWords). Проиграно: \(totalLosses)"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        newRound()
+        newGame()
     }
     
     // MARK: - IB Actions
@@ -95,6 +113,32 @@ class ViewController: UIViewController {
         updateGameState()
     }
     
+    @IBAction func newGameButtonPressed(_ sender: Any) {
+        newGame()
+    }
     
+    @IBAction func unitedStatesButtonPressed() {
+        listOfWords = ListOfWords().unitedStates.shuffled()
+        totalWords = listOfWords.count
+        startGame()
+    }
+    
+    @IBAction func indiaStatesButtonPressed() {
+        listOfWords = ListOfWords().indiaStates.shuffled()
+        totalWords = listOfWords.count
+        startGame()
+    }
+    
+    @IBAction func countriesButtonPressed() {
+        listOfWords = ListOfWords().countries.shuffled()
+        totalWords = listOfWords.count
+        startGame()
+    }
+    
+    @IBAction func citiesButtonPressed() {
+        listOfWords = ListOfWords().cities.shuffled()
+        totalWords = listOfWords.count
+        startGame()
+    }
 }
 

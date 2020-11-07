@@ -15,6 +15,7 @@
 		C29D1F862555B87F00992A20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29D1F842555B87F00992A20 /* LaunchScreen.storyboard */; };
 		C29D1F8F2555D9D400992A20 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D1F8E2555D9D400992A20 /* Game.swift */; };
 		C2AC845725569D240054291D /* Screenshots in Resources */ = {isa = PBXBuildFile; fileRef = C2AC845625569D240054291D /* Screenshots */; };
+		C2AC845A2556A2C70054291D /* ListOfWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC84592556A2C70054291D /* ListOfWords.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C29D1F872555B87F00992A20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C29D1F8E2555D9D400992A20 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		C2AC845625569D240054291D /* Screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screenshots; sourceTree = "<group>"; };
+		C2AC84592556A2C70054291D /* ListOfWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfWords.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				C29D1F842555B87F00992A20 /* LaunchScreen.storyboard */,
 				C29D1F872555B87F00992A20 /* Info.plist */,
 				C29D1F8E2555D9D400992A20 /* Game.swift */,
+				C2AC84592556A2C70054291D /* ListOfWords.swift */,
 			);
 			path = "Apple Pie";
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C29D1F7E2555B87C00992A20 /* ViewController.swift in Sources */,
+				C2AC845A2556A2C70054291D /* ListOfWords.swift in Sources */,
 				C29D1F7A2555B87C00992A20 /* AppDelegate.swift in Sources */,
 				C29D1F7C2555B87C00992A20 /* SceneDelegate.swift in Sources */,
 				C29D1F8F2555D9D400992A20 /* Game.swift in Sources */,
