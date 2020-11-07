@@ -391,7 +391,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alD-en-LB7">
                                         <rect key="frame" x="0.0" y="644" width="414" height="174"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="Города"/>
+                                        <state key="normal" title="Столицы"/>
                                         <connections>
                                             <action selector="citiesButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="SuQ-CV-q2M"/>
                                         </connections>
